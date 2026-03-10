@@ -1,0 +1,90 @@
+"use client";
+
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useReducer,
+  type ReactNode,
+} from "react";
+import type { CartItem } from "@/types/cart";
+
+export type CartState = CartItem[];
+
+type AddItemAction = { type: "ADD_ITEM"; item: CartItem };
+
+type RemoveItemAction = {
+  type: "REMOVE_ITEM";
+  payload: { id: string } | { index: number };
+};
+
+type CartAction = AddItemAction | RemoveItemAction;
+
+function cartReducer(state: CartState, action: CartAction): CartState {
+  switch (action.type) {
+    case "ADD_ITEM":
+      return [...state, action.item];
+
+    case "REMOVE_ITEM": {
+      const { payload } = action;
+      if ("index" in payload) {
+        const i = payload.index;
+        if (i < 0 || i >= state.length) return state;
+        return state.filter((_, idx) => idx !== i);
+      }
+      return state.filter((item) => item.id !== payload.id);
+    }
+
+    default:
+      return state;
+  }
+}
+
+type CartContextValue = {
+  cart: CartState;
+  addItem: (item: Omit<CartItem, "id">) => void;
+  removeItem: (by: { id: string } | { index: number }) => void;
+  dispatch: React.Dispatch<CartAction>;
+};
+
+const CartContext = createContext<CartContextValue | null>(null);
+
+export function CartProvider({ children }: { children: ReactNode }) {
+  const [cart, dispatch] = useReducer(cartReducer, []);
+
+  const addItem = useCallback((item: Omit<CartItem, "id">) => {
+    dispatch({
+      type: "ADD_ITEM",
+      item: { ...item, id: crypto.randomUUID() },
+    });
+  }, []);
+
+  const removeItem = useCallback(
+    (by: { id: string } | { index: number }) => {
+      dispatch({
+        type: "REMOVE_ITEM",
+        payload: by,
+      });
+    },
+    []
+  );
+
+  const value: CartContextValue = {
+    cart,
+    addItem,
+    removeItem,
+    dispatch,
+  };
+
+  return (
+    <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  );
+}
+
+export function useCart(): CartContextValue {
+  const ctx = useContext(CartContext);
+  if (ctx == null) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+  return ctx;
+}
