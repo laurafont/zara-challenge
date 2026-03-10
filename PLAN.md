@@ -1,0 +1,87 @@
+## Requirements
+
+Tech stack: next.js
+
+- dev mode + production mode
+- testing
+- responsiveness
+- accessibility
+- use linters and formatters
+- x-api-key header on every request for authentification
+- Product page view:
+  - Phone image changes by selected color (dynamic image per color).
+  - Selectors for storage and color with real-time price update.
+  - “Añadir al carrito” enabled only when both color and storage are selected.
+  - "Similar products" rendered at the bottom
+- Cart view:
+  - Button to remove a single item from the cart.
+  - “Continuar comprando” button that goes back to the main (list) view.
+
+## Architecture decisions
+
+- useReducer to manage Cart state
+- use localStorage to persist cart state
+- Context API
+- search filtering via API
+- Custom hooks: useDebounce, useProductList, useProduct (and useCart from context)
+- Cart item: productId, name, image, color, storage, unit price, quantity.
+- Product view needs: one product by id, variants (colors with image URLs, storage with price)
+- API:
+  - fetchProducts for list + search, returns: brand, name, basePrice, imageUrl
+  - getProduct(id) for product page, returns product (brand, name, description, basePrice, specs) with variants (colorOptions, storageOptions), and similarProducts.
+  - Handle loading and error states for API calls
+  - separate API folder to handle requests, include “x-api-key" in all requests
+- Design:
+  - follow Figma for layout and components; typography: Helvetica, Arial, sans-serif
+  - SASS in modules for styling, create SASS variables from Figma tokens/variables for colors, spacing, font-sizes...
+- Handle empty states for no results and empty cart (add message in UI)
+- shared formatters (eg. price) in utils
+- constants: API base URL and route paths (/, /product/[id], /cart)
+- Clean Architecture:
+  - dependencies point inward: types at center (no React/api in types)
+  - api depends only on types (and config)
+  - context/hooks depend on types and api
+  - components and app depend on context, hooks, and types, no direct api imports in UI
+- testing:
+  - Jest + React Testing library for unit tests
+  - Integration tests
+  - e2e
+  - Accessibility tests
+- linters and formatters: ESLint and Prettier
+- Asset modes: Next.js dev (unminified) and production build (minified) by default
+- structure:
+  - layout: Header (logo + Cart icon with quantity) + children
+  - pages:
+    - home: display 20 items + search bar with search results counter
+    - product page
+    - cart
+- folder structure:
+  - app
+  - components:
+    - UI
+      - container
+      - button
+      - icons
+      - label
+      - input
+      - carousel
+    - Logo
+    - CartIcon
+    - SearchBar
+    - ProductList
+    - ProductCard
+    - ProductItem
+      - ProductItemHeader
+      - ProductItemSpecs
+    - SimilarItems
+    - Cart
+      - CartItems
+      - CartFooter
+  - context
+  - hooks
+  - types
+  - utils
+  - constants
+  - api
+    - fetchProducts
+    - getProduct
