@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment variables
+
+Create a `.env.local` file in the project root (see `.env.example`). The app uses:
+
+| Variable                   | Description                                                                                                                     | Required                                  |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `NEXT_PUBLIC_API_BASE_URL` | Base URL for the REST API.                                                                                                      | Yes for API calls.                        |
+| `NEXT_PUBLIC_API_KEY`      | Value for the `x-api-key` header on every API request. In production, set this in your environment; do not rely on the default. | No; a dev fallback exists for local runs. |
+
+For production, set both in your hosting provider’s environment (e.g. Vercel) and never commit real keys to the repo.
+
 ## Getting Started
 
 First, run the development server:
