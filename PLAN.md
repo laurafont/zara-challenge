@@ -24,7 +24,7 @@ Tech stack: next.js
 - Context API
 - search filtering via API
 - Custom hooks: useDebounce, useProductList, useProduct (and useCart from context)
-- Cart item: productId, name, image, color, storage, unit price, quantity.
+- Cart item: productId, brand, name, image, color, storage, unit price
 - Product view needs: one product by id, variants (colors with image URLs, storage with price)
 - API:
   - fetchProducts for list + search, returns: brand, name, basePrice, imageUrl

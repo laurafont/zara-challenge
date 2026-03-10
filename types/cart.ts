@@ -1,0 +1,13 @@
+export interface CartItem {
+  productId: string;
+  brand: string;
+  name: string;
+  color: string;
+  storage: string;
+  imageUrl: string;
+  unitPrice: number;
+}
+
+export interface CartProps {
+  items: CartItem[];
+}
