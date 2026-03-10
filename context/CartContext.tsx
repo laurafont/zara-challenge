@@ -4,10 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useReducer,
   type ReactNode,
 } from "react";
 import type { CartItem } from "@/types/cart";
+import { getStoredCart, setStoredCart } from "./cartStorage";
 
 export type CartState = CartItem[];
 
@@ -49,8 +51,16 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
+function getInitialCart(): CartState {
+  return getStoredCart();
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cart, dispatch] = useReducer(cartReducer, []);
+  const [cart, dispatch] = useReducer(cartReducer, null, getInitialCart);
+
+  useEffect(() => {
+    setStoredCart(cart);
+  }, [cart]);
 
   const addItem = useCallback((item: Omit<CartItem, "id">) => {
     dispatch({
