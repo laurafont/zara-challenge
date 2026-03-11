@@ -20,6 +20,7 @@ import { formatPrice } from "@/utils/formatPrice";
 import styles from "./ProductItem.module.scss";
 import { ROUTES } from "@/constants";
 import { ArrowLeftIcon } from "../UI/Icons";
+import { SimilarItems } from "../SimilarItems";
 
 type ProductItemProps = {
   productId: string;
@@ -136,6 +137,11 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
         </section>
 
         <ProductItemSpecs product={product} />
+      </Container>
+      <Container size="small">
+        {product.similarProducts.length > 0 && (
+          <SimilarItems products={product.similarProducts} />
+        )}
       </Container>
     </>
   );

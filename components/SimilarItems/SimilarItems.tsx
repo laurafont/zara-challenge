@@ -17,16 +17,18 @@ export function SimilarItems({ products }: SimilarItemsProps) {
     <section className={styles.section} aria-labelledby="similar-heading">
       <div id="similar-heading">
         <Heading level="h2" className={styles.title}>
-          Similar products
+          Similar Items
         </Heading>
       </div>
-      <Carousel aria-label="Similar products">
-        {products.map((product) => (
-          <div key={product.id} className={styles.item} role="listitem">
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </Carousel>
+      <div className={styles.carouselWrap}>
+        <Carousel className={styles.carousel} aria-label="Similar products">
+          {products.map((product) => (
+            <div key={product.id} className={styles.item} role="listitem">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </section>
   );
 }

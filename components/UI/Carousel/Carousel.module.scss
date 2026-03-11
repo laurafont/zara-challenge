@@ -1,8 +1,7 @@
-@use "../../styles/variables" as *;
+@use "../../../styles/variables" as *;
 
 .carousel {
   display: flex;
-  gap: $spacing-xl;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;

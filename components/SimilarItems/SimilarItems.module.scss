@@ -1,9 +1,8 @@
 @use "../../styles/variables" as *;
 
 .section {
-  margin-top: $spacing-2xl;
-  padding-top: $spacing-2xl;
-  border-top: $border;
+  margin-block-start: $spacing-2xl;
+  margin-block-end: $spacing-2xl;
 }
 
 .title {
@@ -11,6 +10,35 @@
   text-transform: uppercase;
 }
 
+.carouselWrap {
+  width: calc(50% + 50vw);
+  margin-left: 0;
+}
+
+.carousel {
+  //scrollbar-width: thin;
+  //scrollbar-color: $color-foreground $color-light-gray;
+
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color-light-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-foreground;
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-foreground;
+  }
+}
+
 .item {
   width: min(260px, 70vw);
+  border: $border;
+  box-sizing: border-box;
 }
