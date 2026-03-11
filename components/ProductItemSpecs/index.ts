@@ -1,0 +1,1 @@
+export { ProductItemSpecs } from "./ProductItemSpecs";

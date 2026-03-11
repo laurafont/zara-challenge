@@ -1,0 +1,16 @@
+@use "../../styles/variables" as *;
+
+.carousel {
+  display: flex;
+  gap: $spacing-xl;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-block: $spacing-md;
+
+  & > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}

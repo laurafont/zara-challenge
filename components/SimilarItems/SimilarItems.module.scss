@@ -1,0 +1,16 @@
+@use "../../styles/variables" as *;
+
+.section {
+  margin-top: $spacing-2xl;
+  padding-top: $spacing-2xl;
+  border-top: $border;
+}
+
+.title {
+  margin-bottom: $spacing-lg;
+  text-transform: uppercase;
+}
+
+.item {
+  width: min(260px, 70vw);
+}

@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+
+.specs {
+  margin-block-start: $spacing-2xl;
+}
+
+.title {
+  text-transform: uppercase;
+  margin-bottom: $spacing-lg;
+}
+
+.specList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: $spacing-md;
+  align-items: baseline;
+  padding: $spacing-md 0;
+  border-bottom: $border;
+  &:first-of-type {
+    border-top: $border;
+  }
+  &:last-of-type {
+    border-bottom: $border;
+  }
+}
+
+.specTerm {
+  text-transform: uppercase;
+}
+
+.specValue {
+  margin: 0;
+}

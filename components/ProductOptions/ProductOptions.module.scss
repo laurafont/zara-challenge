@@ -1,0 +1,76 @@
+@use "../../styles/variables" as *;
+
+$option-border: 1px solid $color-light-gray;
+
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.storageOptions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.storageButton {
+  margin-top: 0;
+  padding: $spacing-md $spacing-md;
+  border: $option-border;
+  background: $color-background;
+  font-size: $font-size-md;
+  color: $color-foreground;
+  min-width: 95px;
+  cursor: pointer;
+
+  & + .storageButton {
+    margin-left: -1px;
+  }
+
+  &:hover:not(:disabled),
+  &.selected {
+    position: relative;
+    z-index: 1;
+    border: 1px solid $color-foreground;
+  }
+}
+
+.selectorGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.colorOptions {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  margin-top: $spacing-sm;
+}
+
+.colorLabel {
+  margin: 0;
+  color: $color-foreground;
+}
+
+.colorButton {
+  margin-top: 0;
+  width: 20px;
+  height: 20px;
+  outline: $option-border;
+  outline-offset: 1px;
+  border-radius: 0;
+  background-color: var(--color, $color-light-gray);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  text-transform: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.selected {
+    box-shadow: 0 0 0 2px $color-foreground;
+  }
+}

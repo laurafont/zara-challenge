@@ -1,0 +1,23 @@
+@use "../../../styles/variables" as *;
+
+.button {
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  background: $color-foreground;
+  color: $color-background;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    background: $button-background-disabled;
+    color: $button-text-disabled;
+    cursor: not-allowed;
+  }
+}

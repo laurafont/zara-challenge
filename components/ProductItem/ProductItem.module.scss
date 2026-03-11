@@ -1,0 +1,75 @@
+@use "../../styles/variables" as *;
+
+.wrapper {
+  padding-block: $spacing-xl;
+}
+
+.backIcon {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
+  svg {
+    transition: all 0.3s ease-in-out;
+  }
+  &:hover,
+  &:focus {
+    svg {
+      transform: translateX(-5px);
+    }
+  }
+}
+
+.header {
+  display: grid;
+  gap: $spacing-2xl;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: 20%;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  min-width: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.name {
+  color: $color-foreground;
+  margin: 0;
+}
+
+.price {
+  font-size: $font-size-2xl;
+}
+
+.message {
+  padding-block: $spacing-xl;
+  font-size: $font-size-lg;
+  color: $color-foreground;
+}
+
+.error {
+  color: $color-error;
+}

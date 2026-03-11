@@ -1,45 +1,29 @@
 @use "../../../styles/variables" as *;
 
-.h1 {
-  font-family: $font-family-base;
-  font-size: $font-size-3xl;
+.h1,
+.h2,
+.h3,
+.h4 {
+  text-transform: uppercase;
   font-weight: $font-weight-base;
   line-height: $line-height-tight;
+  font-family: $font-family-base;
+}
+
+.h1 {
+  font-size: $font-size-3xl;
 }
 
 .h2 {
-  font-family: $font-family-base;
   font-size: $font-size-2xl;
-  font-weight: $font-weight-base;
-  line-height: $line-height-tight;
 }
 
 .h3 {
-  font-family: $font-family-base;
   font-size: $font-size-xl;
-  font-weight: $font-weight-base;
-  line-height: $line-height-tight;
 }
 
 .h4 {
-  font-family: $font-family-base;
   font-size: $font-size-lg;
-  font-weight: $font-weight-base;
-  line-height: $line-height-tight;
-}
-
-.h5 {
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-base;
-  line-height: $line-height-tight;
-}
-
-.h6 {
-  font-family: $font-family-base;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-base;
-  line-height: $line-height-tight;
 }
 
 .body {
@@ -66,6 +50,14 @@
 .overline {
   font-family: $font-family-base;
   font-size: $font-size-sm;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: $font-family-base;
+  font-size: $font-size-md;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   text-transform: uppercase;

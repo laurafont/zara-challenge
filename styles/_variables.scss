@@ -27,6 +27,7 @@ $spacing-2xl: 3rem; // 48px
 
 // Layout / Container
 $container-max-width: 1720px;
+$container-max-width-sm: 1200px;
 $container-padding-x: 5.2%;
 
 // Color
@@ -37,8 +38,13 @@ $color-primary: #1b1a18;
 $color-muted: #79736d;
 $color-placeholder: #aaaaaa;
 $color-error: #c00;
-$color-light-gray: #c7c7c7;
+$color-light-gray: #cccccc;
 
 // Border
 $border: 0.5px solid $color-border;
 $border-thickness: 0.5px;
+
+// Button
+$button-background: $color-foreground;
+$button-background-disabled: #f3f2f2;
+$button-text-disabled: #c2bfbc;
