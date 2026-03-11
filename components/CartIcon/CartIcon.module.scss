@@ -1,0 +1,12 @@
+@use "../../styles/variables" as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.count {
+  color: $color-foreground;
+  font-size: $font-size-base;
+  margin-left: $spacing-xs;
+}

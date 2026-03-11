@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useReducer,
   type ReactNode,
 } from "react";
@@ -42,11 +43,10 @@ function cartReducer(state: CartState, action: CartAction): CartState {
   }
 }
 
-type CartContextValue = {
+export type CartContextValue = {
   cart: CartState;
   addItem: (item: Omit<CartItem, "id">) => void;
   removeItem: (by: { id: string } | { index: number }) => void;
-  dispatch: React.Dispatch<CartAction>;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -79,12 +79,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     []
   );
 
-  const value: CartContextValue = {
-    cart,
-    addItem,
-    removeItem,
-    dispatch,
-  };
+  const value: CartContextValue = useMemo(
+    () => ({
+      cart,
+      addItem,
+      removeItem,
+    }),
+    [cart, addItem, removeItem]
+  );
 
   return (
     <CartContext.Provider value={value}>{children}</CartContext.Provider>

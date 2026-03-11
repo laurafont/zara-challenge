@@ -1,0 +1,16 @@
+@use "../../styles/variables" as *;
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.cart {
+  flex-shrink: 0;
+}
