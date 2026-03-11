@@ -1,8 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "prueba-tecnica-api-tienda-moviles.onrender.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "prueba-tecnica-api-tienda-moviles.onrender.com",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

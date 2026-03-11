@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import type { ProductProps } from "@/types/product";
 import { fetchProducts } from "@/api/fetchProducts";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -17,6 +17,7 @@ export function useProductList(initialProducts?: ProductProps[]) {
       initialProducts !== undefined && debouncedQuery === ""
         ? initialProducts
         : undefined,
+    placeholderData: keepPreviousData,
   });
 
   return {

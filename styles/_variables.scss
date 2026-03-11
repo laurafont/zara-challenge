@@ -2,6 +2,7 @@
 $font-family-base: Helvetica, Arial, sans-serif;
 
 // Font sizes
+$font-size-xxs: 0.625rem; // 10px
 $font-size-xs: 0.75rem; // 12px
 $font-size-sm: 0.875rem; // 14px
 $font-size-base: 1rem; // 16px
@@ -29,8 +30,11 @@ $color-background: #ffffff;
 $color-foreground: #000000;
 $color-border: #000000;
 $color-primary: #1b1a18;
-$color-muted: #f3f2f2;
+$color-muted: #79736d;
 $color-placeholder: #aaaaaa;
+$color-error: #c00;
+$color-light-gray: #c7c7c7;
 
 // Border
 $border: 0.5px solid $color-border;
+$border-thickness: 0.5px;

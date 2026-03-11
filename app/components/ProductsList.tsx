@@ -2,6 +2,7 @@
 
 import type { ProductProps } from "@/types/product";
 import { useProductList } from "@/hooks/useProductList";
+import { ProductList } from "@/components/ProductList";
 import { SearchBar } from "@/components/SearchBar";
 
 type ProductsListProps = {
@@ -20,9 +21,7 @@ export function ProductsList({ initialProducts }: ProductsListProps) {
         placeholder="Search products..."
         resultCount={totalCount}
       />
-      {loading && <p>Loading…</p>}
-      {error && <p>Error: {error.message}</p>}
-      {!loading && !error && <p>Products: {totalCount}</p>}
+      <ProductList products={products} loading={loading} error={error} />
     </div>
   );
 }

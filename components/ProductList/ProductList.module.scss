@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin-top: $spacing-xl;
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+
+  li {
+    border: $border;
+  }
+}
+
+.gridItem {
+  animation: productListSlideIn 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 50ms);
+  opacity: 0;
+}
+
+@keyframes productListSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message {
+  margin-top: $spacing-xl;
+  font-size: $font-size-base;
+  color: $color-foreground;
+}
+
+.error {
+  color: $color-error;
+}
