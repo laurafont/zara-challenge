@@ -3,6 +3,7 @@ import Link from "next/link";
 import { productPath } from "@/constants";
 import type { ProductProps } from "@/types/product";
 import { formatPrice } from "@/utils/formatPrice";
+import { Heading, Text } from "@/components/UI/Typography";
 import styles from "./ProductCard.module.scss";
 
 type ProductCardProps = {
@@ -27,10 +28,16 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className={styles.body}>
           <div>
-            <span className={styles.brand}>{brand}</span>
-            <h2 className={styles.name}>{name}</h2>
+            <Text variant="overline" as="span" className={styles.brand}>
+              {brand}
+            </Text>
+            <Heading className={styles.name} level="h2">
+              {name}
+            </Heading>
           </div>
-          <p className={styles.price}>{formatPrice(basePrice)}</p>
+          <Text variant="caption" as="p" className={styles.price}>
+            {formatPrice(basePrice)}
+          </Text>
         </div>
       </Link>
     </article>

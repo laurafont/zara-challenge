@@ -69,19 +69,16 @@
 }
 
 .brand {
-  font-size: $font-size-xxs;
-  text-transform: uppercase;
   color: $color-muted;
 }
 
 .name {
-  font-size: $font-size-xs;
+  font-size: $font-size-base;
   font-weight: $font-weight-base;
-  line-height: 1.3;
+  line-height: $line-height-tight;
   text-transform: uppercase;
 }
 
 .price {
-  font-size: $font-size-xxs;
   color: $color-foreground;
 }

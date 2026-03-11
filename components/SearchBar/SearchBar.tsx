@@ -1,5 +1,6 @@
 import type { ChangeEvent } from "react";
 import { Input } from "@/components/UI/Input";
+import { Text } from "@/components/UI/Typography";
 import styles from "./SearchBar.module.scss";
 
 const SEARCH_INPUT_ID = "search";
@@ -31,9 +32,14 @@ export function SearchBar({
         />
       </div>
 
-      <p className={styles.results} aria-live="polite">
+      <Text
+        variant="overline"
+        as="p"
+        className={styles.results}
+        aria-live="polite"
+      >
         {resultCount} {resultCount === 1 ? "result" : "results"}
-      </p>
+      </Text>
     </div>
   );
 }

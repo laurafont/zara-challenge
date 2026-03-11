@@ -65,6 +65,7 @@ Tech stack: next.js
       - label
       - input
       - carousel
+      - typography
     - Logo
     - CartIcon
     - SearchBar

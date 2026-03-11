@@ -1,0 +1,72 @@
+@use "../../../styles/variables" as *;
+
+.h1 {
+  font-family: $font-family-base;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.h2 {
+  font-family: $font-family-base;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.h3 {
+  font-family: $font-family-base;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.h4 {
+  font-family: $font-family-base;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.h5 {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.h6 {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-base;
+  line-height: $line-height-tight;
+}
+
+.body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+}
+
+.bodySmall {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+}
+
+.caption {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+}
+
+.overline {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  text-transform: uppercase;
+}
