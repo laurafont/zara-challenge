@@ -1,13 +1,13 @@
 import { fetchProducts } from "@/api/fetchProducts";
 import { Container } from "@/components/UI/Container";
-import { ProductsList } from "./components/ProductsList";
+import { ProductsSection } from "@/components/ProductsSection";
 
 export default async function Home() {
   const initialProducts = await fetchProducts();
 
   return (
     <Container>
-      <ProductsList initialProducts={initialProducts} />
+      <ProductsSection initialProducts={initialProducts} />
     </Container>
   );
 }

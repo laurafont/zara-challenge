@@ -5,11 +5,11 @@ import { useProductList } from "@/hooks/useProductList";
 import { ProductList } from "@/components/ProductList";
 import { SearchBar } from "@/components/SearchBar";
 
-type ProductsListProps = {
+type ProductsSectionProps = {
   initialProducts: ProductProps[];
 };
 
-export function ProductsList({ initialProducts }: ProductsListProps) {
+export function ProductsSection({ initialProducts }: ProductsSectionProps) {
   const { products, loading, error, search, setSearch, totalCount } =
     useProductList(initialProducts);
 
