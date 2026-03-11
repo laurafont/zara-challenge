@@ -1,0 +1,19 @@
+@use "../../styles/variables" as *;
+
+.searchBar {
+  margin-block-start: $spacing-2xl;
+  margin-block-end: $spacing-2xl;
+}
+
+.inputWrapper {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.results {
+  flex-shrink: 0;
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  color: $color-foreground;
+  margin-top: $spacing-md;
+}

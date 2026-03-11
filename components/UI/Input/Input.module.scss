@@ -1,0 +1,43 @@
+@use "../../../styles/variables" as *;
+
+.input {
+  width: 100%;
+  padding: $spacing-sm 0;
+  font-family: $font-family-base;
+  font-weight: $font-weight-base;
+  font-size: $font-size-base;
+  color: $color-foreground;
+  background-color: $color-background;
+  border: 0;
+  border-bottom: $border;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: $color-placeholder;
+}
+
+.input:focus {
+  outline: 2px solid $color-foreground;
+  outline-offset: 2px;
+}
+
+.label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
