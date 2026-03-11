@@ -6,6 +6,7 @@ type InputProps = {
   id: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  type?: "text" | "search" | "email" | "password" | "tel" | "url";
   label?: string;
   labelHidden?: boolean;
   placeholder?: string;
@@ -16,6 +17,7 @@ export function Input({
   id,
   value,
   onChange,
+  type = "text",
   label,
   labelHidden = false,
   placeholder,
@@ -23,7 +25,7 @@ export function Input({
 }: InputProps) {
   const inputEl = (
     <input
-      type="text"
+      type={type}
       id={id}
       value={value}
       onChange={onChange}

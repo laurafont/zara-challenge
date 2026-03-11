@@ -8,7 +8,6 @@ type SearchBarProps = {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  /** Number of results; passed from parent (e.g. from useProductList totalCount). */
   resultCount: number;
 };
 
@@ -23,6 +22,7 @@ export function SearchBar({
       <div className={styles.inputWrapper}>
         <Input
           id={SEARCH_INPUT_ID}
+          type="search"
           value={value}
           onChange={onChange}
           label="Search"
