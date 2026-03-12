@@ -20,8 +20,12 @@ export function SimilarItems({ products }: SimilarItemsProps) {
       </div>
       <div className={styles.carouselWrap}>
         <Carousel className={styles.carousel} aria-label="Similar products">
-          {products.map((product) => (
-            <div key={product.id} className={styles.item} role="listitem">
+          {products.map((product, index) => (
+            <div
+              key={`${product.id}-${index}`}
+              className={styles.item}
+              role="listitem"
+            >
               <ProductCard product={product} />
             </div>
           ))}

@@ -22,10 +22,18 @@ type RemoveItemAction = {
   payload: { id: string };
 };
 
-type CartAction = AddItemAction | RemoveItemAction;
+type InitCartAction = {
+  type: "INIT_CART";
+  payload: CartItem[];
+};
+
+type CartAction = AddItemAction | RemoveItemAction | InitCartAction;
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
+    case "INIT_CART":
+      return action.payload;
+
     case "ADD_ITEM":
       return [...state, action.item];
 
@@ -49,9 +57,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, dispatch] = useReducer(cartReducer, []);
 
   // Start empty so server and client render the same initial state, then
-  // replay persisted items after mount to avoid a hydration mismatch.
+  // load persisted items after mount to avoid a hydration mismatch.
   useEffect(() => {
-    getStoredCart().forEach((item) => dispatch({ type: "ADD_ITEM", item }));
+    dispatch({ type: "INIT_CART", payload: getStoredCart() });
   }, []);
 
   useEffect(() => {
