@@ -18,7 +18,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
       <SearchBar
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search products..."
+        placeholder="Search for a smartphone..."
         resultCount={totalCount}
       />
       <ProductList products={products} loading={loading} error={error} />

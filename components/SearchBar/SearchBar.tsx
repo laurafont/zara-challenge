@@ -33,7 +33,7 @@ export function SearchBar({
       </div>
 
       <Text
-        variant="overline"
+        variant="label"
         as="p"
         className={styles.results}
         aria-live="polite"
