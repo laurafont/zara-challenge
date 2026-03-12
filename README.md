@@ -140,10 +140,11 @@ e2e/                    # Playwright end-to-end tests
 ### Data flow
 
 1. **Server** fetches product data during build or on the first cache-miss request via `getProduct` / `fetchProducts`, both of which call `apiRequest` in `api/client.ts`.
-2. The fetched data is passed as props to client components (`ProductsSection`, `ProductItem`).
-3. **React Query** on the client receives this data as `initialData` with `initialDataUpdatedAt: Date.now()` and `staleTime: 3600 * 1000`, so no redundant background re-fetch fires on hydration.
-4. For **live search**, React Query fires client-side fetches as the user types, debounced at 300 ms, with `keepPreviousData` to avoid blank states between queries.
-5. The `x-api-key` header is injected centrally in `api/client.ts`; no individual fetch call manages auth.
+2. `fetchProducts` always requests `limit=20` from the API via a `limit` query parameter, keeping the payload small. When a search query is present, it appends `search=<term>` alongside `limit`.
+3. The fetched data is passed as props to client components (`ProductsSection`, `ProductItem`).
+4. **React Query** on the client receives this data as `initialData` with `initialDataUpdatedAt: Date.now()` and `staleTime: 3600 * 1000`, so no redundant background re-fetch fires on hydration.
+5. For **live search**, React Query fires client-side fetches as the user types, debounced at 300 ms, with `keepPreviousData` to avoid blank states between queries.
+6. The `x-api-key` header is injected centrally in `api/client.ts`; no individual fetch call manages auth.
 
 ### Cart state
 
@@ -156,7 +157,7 @@ e2e/                    # Playwright end-to-end tests
 
 ## Features
 
-- **Product listing** with live client-side search (debounced, `keepPreviousData`)
+- **Product listing** — first 20 products fetched via `limit=20` API param; live search (debounced, `keepPreviousData`)
 - **Product detail** with colour and storage variant selection
 - **Add to cart** with navigation to cart on confirmation
 - **Persistent cart** survives page refresh via localStorage

@@ -35,7 +35,7 @@ export function ProductCard({ product }: ProductCardProps) {
               {name}
             </Heading>
           </div>
-          <Text variant="caption" as="p" className={styles.price}>
+          <Text as="p" className={styles.price}>
             {formatPrice(basePrice)}
           </Text>
         </div>

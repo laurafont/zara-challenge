@@ -1,13 +1,13 @@
 import type { ProductProps } from "@/types/product";
 import { apiRequest } from "@/api/client";
 
-// Fetches the product list, optionally filtered by search query.
+const PRODUCT_LIMIT = 20;
 
+// Fetches the product list, optionally filtered by search query.
 export async function fetchProducts(query?: string): Promise<ProductProps[]> {
-  const path = query?.trim()
-    ? `products?search=${encodeURIComponent(query.trim())}`
-    : "products";
-  const response = await apiRequest(path);
+  const params = new URLSearchParams({ limit: String(PRODUCT_LIMIT) });
+  if (query?.trim()) params.set("search", query.trim());
+  const response = await apiRequest(`products?${params.toString()}`);
 
   if (!response.ok) {
     const message = await response.text().catch(() => response.statusText);
