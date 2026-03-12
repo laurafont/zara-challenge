@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { productPath } from "@/constants";
+import { productPath } from "@/constants/routes";
 import type { ProductProps } from "@/types/product";
 import { formatPrice } from "@/utils/formatPrice";
 import { Heading, Text } from "@/components/UI/Typography";

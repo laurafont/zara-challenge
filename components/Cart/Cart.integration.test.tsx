@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { Cart } from "../../components/Cart/Cart";
-import { Providers } from "../../context/providers";
+import { Cart } from "./Cart";
+import { Providers } from "@/context/providers";
 import * as cartStorageModule from "../../context/cartStorage";
 
 const mockCartItem = {

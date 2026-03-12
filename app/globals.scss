@@ -1,10 +1,5 @@
 @use "../styles/variables" as *;
 
-:root {
-  --background: #{$color-background};
-  --foreground: #{$color-foreground};
-}
-
 html {
   scrollbar-gutter: stable;
 }
@@ -16,16 +11,15 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: $color-foreground;
+  background: $color-background;
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
+  line-height: $line-height-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 main {
@@ -41,4 +35,16 @@ main {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

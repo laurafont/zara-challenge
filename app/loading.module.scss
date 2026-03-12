@@ -1,0 +1,103 @@
+@use "../styles/variables" as *;
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@mixin shimmer {
+  background: linear-gradient(
+    90deg,
+    $color-light-gray 25%,
+    #e0e0e0 50%,
+    $color-light-gray 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+// SearchBar skeleton — mirrors SearchBar.module.scss spacing
+.searchBar {
+  margin-block: $spacing-2xl;
+}
+
+.searchInput {
+  @include shimmer;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.searchResultCount {
+  @include shimmer;
+  width: 5rem;
+  height: $font-size-sm;
+  margin-top: $spacing-md;
+}
+
+// Product grid skeleton — mirrors ProductList.module.scss
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin-top: $spacing-xl;
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+
+  li {
+    border: $border;
+  }
+}
+
+// Card skeleton — mirrors ProductCard.module.scss
+.card {
+  aspect-ratio: 1;
+  padding: $spacing-md;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImage {
+  @include shimmer;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: $spacing-xs;
+  padding-top: $spacing-md;
+}
+
+.cardTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  flex: 1;
+  min-width: 0;
+}
+
+.cardBrand {
+  @include shimmer;
+  width: 40%;
+  height: $font-size-sm;
+}
+
+.cardName {
+  @include shimmer;
+  width: 65%;
+  height: $font-size-base;
+}
+
+.cardPrice {
+  @include shimmer;
+  width: 20%;
+  height: $font-size-base;
+  flex-shrink: 0;
+}

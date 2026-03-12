@@ -1,8 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { ProductItem } from "../../components/ProductItem/ProductItem";
-import { CartIcon } from "../../components/CartIcon";
-import { Providers } from "../../context/providers";
-import { ROUTES } from "../../constants";
+import { ProductItem } from "./ProductItem";
+import { CartIcon } from "@/components/CartIcon";
+import { Providers } from "@/context/providers";
+import { ROUTES } from "@/constants/routes";
 
 const mockProductDetail = {
   id: "p1",

@@ -9,6 +9,7 @@ import { Heading } from "@/components/UI/Typography";
 
 export function Cart() {
   const { cart } = useCart();
+  const total = cart.reduce((sum, item) => sum + item.unitPrice, 0);
 
   return (
     <Container>
@@ -17,7 +18,7 @@ export function Cart() {
           <Heading level="h1">CART ({cart.length})</Heading>
           <CartItems />
         </div>
-        <CartFooter isEmpty={cart.length === 0} />
+        <CartFooter isEmpty={cart.length === 0} total={total} />
       </section>
     </Container>
   );

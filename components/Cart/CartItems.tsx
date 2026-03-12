@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import type { CartItem as CartItemType } from "@/types/cart";
 import { formatPrice } from "@/utils/formatPrice";
-import { productPath } from "@/constants";
+import { productPath } from "@/constants/routes";
 import { Button } from "@/components/UI/Button";
 import { Text, Heading } from "@/components/UI/Typography";
 import styles from "./CartItems.module.scss";

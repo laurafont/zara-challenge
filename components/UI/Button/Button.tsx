@@ -5,11 +5,19 @@ import styles from "./Button.module.scss";
 type ButtonPropsBase = {
   variant?: "default" | "text";
 };
-type ButtonProps =
-  | (ButtonHTMLAttributes<HTMLButtonElement> &
-      ButtonPropsBase & { href?: undefined })
-  | (AnchorHTMLAttributes<HTMLAnchorElement> &
-      ButtonPropsBase & { href: string });
+
+type ButtonAsButton = ButtonHTMLAttributes<HTMLButtonElement> &
+  ButtonPropsBase & {
+    href?: never;
+  };
+
+type ButtonAsLink = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "onClick"> &
+  ButtonPropsBase & {
+    href: string;
+    onClick?: never;
+  };
+
+type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export function Button(props: ButtonProps) {
   const { variant = "default", className, children, ...rest } = props;

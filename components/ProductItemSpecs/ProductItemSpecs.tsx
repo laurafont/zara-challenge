@@ -1,6 +1,6 @@
 "use client";
 
-import type { ProductDetailProps, ProductSpecs } from "@/types/product";
+import type { ProductDetailProps } from "@/types/product";
 import { Heading } from "@/components/UI/Typography";
 import styles from "./ProductItemSpecs.module.scss";
 

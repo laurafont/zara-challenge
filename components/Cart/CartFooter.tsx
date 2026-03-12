@@ -1,17 +1,12 @@
 "use client";
 
-import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/utils/formatPrice";
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/constants/routes";
 import { Button } from "@/components/UI/Button";
 import { Text } from "@/components/UI/Typography";
 import styles from "./CartFooter.module.scss";
 
-export function CartFooter({ isEmpty }: { isEmpty: boolean }) {
-  const { cart } = useCart();
-
-  const total = cart.reduce((sum, item) => sum + item.unitPrice, 0);
-
+export function CartFooter({ isEmpty, total }: { isEmpty: boolean; total: number }) {
   return (
     <footer className={styles.footer}>
       <Button href={ROUTES.HOME} className={styles.continueBtn}>

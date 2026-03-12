@@ -12,6 +12,8 @@ jest.mock("next/image", () => ({
     [key: string]: unknown;
   }) {
     const { src, alt, fill, priority, ...rest } = props;
+    void fill;
+    void priority;
     return React.createElement("img", { src, alt, ...rest });
   },
 }));

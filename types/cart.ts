@@ -8,7 +8,3 @@ export interface CartItem {
   imageUrl: string;
   unitPrice: number;
 }
-
-export interface CartProps {
-  items: CartItem[];
-}

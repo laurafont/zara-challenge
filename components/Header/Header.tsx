@@ -1,10 +1,8 @@
-"use client";
-
 import { Container } from "@/components/UI/Container";
 import { CartIcon } from "@/components/CartIcon";
 import styles from "./Header.module.scss";
 import Link from "next/link";
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/constants/routes";
 import { HomeIcon } from "../UI/Icons";
 
 export function Header() {

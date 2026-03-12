@@ -20,6 +20,7 @@ blob-report/
 
 # next.js
 /.next/
+/.swc/
 /out/
 
 # production

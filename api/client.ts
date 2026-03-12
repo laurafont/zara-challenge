@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_KEY } from "@/constants";
+import { API_BASE_URL, API_KEY } from "@/api/config";
 
 const DEFAULT_HEADERS = {
   "x-api-key": API_KEY,

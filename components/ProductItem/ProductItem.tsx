@@ -18,7 +18,7 @@ import { Text } from "@/components/UI/Typography";
 import { Heading } from "@/components/UI/Typography";
 import { formatPrice } from "@/utils/formatPrice";
 import styles from "./ProductItem.module.scss";
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/constants/routes";
 import { ArrowLeftIcon } from "../UI/Icons";
 import { SimilarItems } from "../SimilarItems";
 import { notFound, useRouter } from "next/navigation";

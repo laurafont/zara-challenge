@@ -1,3 +1,9 @@
+// Breakpoints
+$breakpoint-sm: 600px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1720px;
+
 // Typography
 $font-family-base: Helvetica, Arial, sans-serif;
 
@@ -26,8 +32,8 @@ $spacing-xl: 2rem; // 32px
 $spacing-2xl: 3rem; // 48px
 
 // Layout / Container
-$container-max-width: 1720px;
-$container-max-width-sm: 1200px;
+$container-max-width: $breakpoint-xl;
+$container-max-width-sm: $breakpoint-lg;
 $container-padding-x: 5.2%;
 
 // Color

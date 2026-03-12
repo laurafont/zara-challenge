@@ -6,7 +6,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { Container } from "@/components/UI/Container";
-import { ProductsSection } from "@/components/ProductsSection";
+import { ProductsSection } from "./ProductsSection";
 import { Providers } from "@/context/providers";
 import * as fetchProductsModule from "../../api/fetchProducts";
 
