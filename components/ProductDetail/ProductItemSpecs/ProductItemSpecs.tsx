@@ -21,7 +21,7 @@ export function ProductItemSpecs({ product }: ProductItemSpecsProps) {
   const { brand, name, description, specs } = product;
 
   return (
-    <section className={styles.specs} aria-label="Specifications">
+    <div className={styles.specs} aria-label="Specifications">
       <Heading level="h3" className={styles.title}>
         Specifications
       </Heading>
@@ -33,6 +33,6 @@ export function ProductItemSpecs({ product }: ProductItemSpecsProps) {
           <SpecRow key={key} term={key} value={value} />
         ))}
       </dl>
-    </section>
+    </div>
   );
 }

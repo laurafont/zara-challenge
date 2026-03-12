@@ -12,7 +12,7 @@ export function SimilarItems({ products }: SimilarItemsProps) {
   if (products.length === 0) return null;
 
   return (
-    <section className={styles.section} aria-labelledby="similar-heading">
+    <div className={styles.section} aria-labelledby="similar-heading">
       <div id="similar-heading">
         <Heading level="h2" className={styles.title}>
           Similar Items
@@ -27,6 +27,6 @@ export function SimilarItems({ products }: SimilarItemsProps) {
           ))}
         </Carousel>
       </div>
-    </section>
+    </div>
   );
 }

@@ -58,7 +58,7 @@ export function ProductItem({ product }: ProductItemProps) {
 
   return (
     <>
-      <Container>
+      <Container as="section">
         <Link href={ROUTES.HOME}>
           <div className={styles.backIcon}>
             <ArrowLeftIcon />
@@ -68,8 +68,8 @@ export function ProductItem({ product }: ProductItemProps) {
           </div>
         </Link>
       </Container>
-      <Container size="small" className={styles.wrapper}>
-        <section className={styles.header}>
+      <Container size="small" as="section" className={styles.wrapper}>
+        <div className={styles.header}>
           <div className={styles.imageWrapper}>
             <Image
               src={displayImageUrl}
@@ -101,11 +101,11 @@ export function ProductItem({ product }: ProductItemProps) {
               Añadir
             </Button>
           </div>
-        </section>
+        </div>
 
         <ProductItemSpecs product={product} />
       </Container>
-      <Container size="small">
+      <Container size="small" as="section">
         {product.similarProducts.length > 0 && (
           <SimilarItems products={product.similarProducts} />
         )}

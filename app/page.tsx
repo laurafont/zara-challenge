@@ -8,7 +8,7 @@ export default async function Home() {
   const initialProducts = await fetchProducts();
 
   return (
-    <Container>
+    <Container as="section">
       <ProductsSection initialProducts={initialProducts} />
     </Container>
   );
