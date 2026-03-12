@@ -89,7 +89,7 @@ describe("useProductList", () => {
     });
   });
 
-  it("uses initialProducts when provided and debounced query is empty", async () => {
+  it("uses initialProducts when provided and debounced query is empty; skips re-fetch", () => {
     const initial = [
       {
         id: "init",
@@ -99,17 +99,16 @@ describe("useProductList", () => {
         imageUrl: "https://example.com/init.png",
       },
     ];
-    fetchProductsMock.mockResolvedValue(initial);
     const { result } = renderHook(() => useProductList(initial), {
       wrapper: createWrapper(),
     });
 
-    await waitFor(() => {
-      expect(result.current.loading).toBe(false);
-    });
+    // initialData is marked fresh via initialDataUpdatedAt — no loading state,
+    // no background re-fetch should fire.
+    expect(result.current.loading).toBe(false);
     expect(result.current.products).toEqual(initial);
     expect(result.current.totalCount).toBe(1);
-    expect(fetchProductsMock).toHaveBeenCalledWith("");
+    expect(fetchProductsMock).not.toHaveBeenCalled();
   });
 
   it("returns error when fetchProducts throws", async () => {

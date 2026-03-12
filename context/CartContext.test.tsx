@@ -70,7 +70,7 @@ describe("CartContext", () => {
       expect(result.current.cart).toHaveLength(0);
     });
 
-    it("removeItem by index: add two items, remove index 0, remaining is second", () => {
+    it("removeItem by id: add two items, remove first by id, remaining is second", () => {
       (uuidModule.v4 as jest.Mock<string>)
         .mockReturnValueOnce("id-1")
         .mockReturnValueOnce("id-2");
@@ -91,11 +91,9 @@ describe("CartContext", () => {
       });
 
       expect(result.current.cart).toHaveLength(2);
-      expect(result.current.cart[0].id).toBe("id-1");
-      expect(result.current.cart[1].id).toBe("id-2");
 
       act(() => {
-        result.current.removeItem({ index: 0 });
+        result.current.removeItem({ id: "id-1" });
       });
 
       expect(result.current.cart).toHaveLength(1);

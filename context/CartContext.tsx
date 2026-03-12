@@ -19,7 +19,7 @@ type AddItemAction = { type: "ADD_ITEM"; item: CartItem };
 
 type RemoveItemAction = {
   type: "REMOVE_ITEM";
-  payload: { id: string } | { index: number };
+  payload: { id: string };
 };
 
 type CartAction = AddItemAction | RemoveItemAction;
@@ -29,15 +29,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case "ADD_ITEM":
       return [...state, action.item];
 
-    case "REMOVE_ITEM": {
-      const { payload } = action;
-      if ("index" in payload) {
-        const i = payload.index;
-        if (i < 0 || i >= state.length) return state;
-        return state.filter((_, idx) => idx !== i);
-      }
-      return state.filter((item) => item.id !== payload.id);
-    }
+    case "REMOVE_ITEM":
+      return state.filter((item) => item.id !== action.payload.id);
 
     default:
       return state;
@@ -47,7 +40,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 export type CartContextValue = {
   cart: CartState;
   addItem: (item: Omit<CartItem, "id">) => void;
-  removeItem: (by: { id: string } | { index: number }) => void;
+  removeItem: (by: { id: string }) => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -70,7 +63,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const removeItem = useCallback((by: { id: string } | { index: number }) => {
+  const removeItem = useCallback((by: { id: string }) => {
     dispatch({
       type: "REMOVE_ITEM",
       payload: by,
