@@ -2,6 +2,8 @@
 
 A mobile-first ecommerce product catalogue built with **Next.js 16 App Router**, **React 19**, and **TypeScript**. Browse products, filter by search, view product detail pages, and manage a persistent shopping cart.
 
+**[Live demo →](https://zara-challenge-red.vercel.app/)**
+
 ---
 
 ## Getting Started
@@ -148,7 +150,7 @@ e2e/                    # Playwright end-to-end tests
 
 - Managed with `useReducer` in `CartContext`.
 - Persisted to `localStorage` via a `useEffect` on every state change.
-- Hydrated from `localStorage` on first render via the reducer initialiser — no flash on page load.
+- Hydrated from `localStorage` after mount via a `useEffect` — server and client start with the same empty state to avoid hydration mismatches.
 - Items are identified by a UUID assigned at dispatch time; removal is always by `id` (never by index).
 
 ---
