@@ -41,14 +41,22 @@ $option-border: 1px solid $color-light-gray;
   gap: $spacing-sm;
 }
 
+.colorGroup {
+  position: relative;
+  padding-bottom: 1.5em;
+  margin-top: $spacing-sm;
+}
+
 .colorOptions {
   display: flex;
   gap: $spacing-md;
   flex-wrap: wrap;
-  margin-top: $spacing-sm;
 }
 
 .colorLabel {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
   margin: 0;
   color: $color-foreground;
 }

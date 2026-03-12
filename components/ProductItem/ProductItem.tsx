@@ -21,6 +21,7 @@ import styles from "./ProductItem.module.scss";
 import { ROUTES } from "@/constants";
 import { ArrowLeftIcon } from "../UI/Icons";
 import { SimilarItems } from "../SimilarItems";
+import { useRouter } from "next/navigation";
 
 type ProductItemProps = {
   productId: string;
@@ -32,7 +33,7 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
     initialData: initialProduct,
   });
   const { addItem } = useCart();
-
+  const router = useRouter();
   const [selectedColor, setSelectedColor] = useState<ProductColorOption | null>(
     null
   );
@@ -58,6 +59,7 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
       imageUrl: selectedColor.imageUrl,
       unitPrice: currentPrice,
     });
+    router.push(ROUTES.CART);
   };
 
   if (loading) {

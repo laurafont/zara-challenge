@@ -1,0 +1,23 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+}
+
+.totalBlock {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.totalPrice {
+  display: flex;
+  gap: $spacing-lg;
+}

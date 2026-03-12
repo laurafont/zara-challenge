@@ -45,7 +45,7 @@
 .infoColumn {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  gap: $spacing-xl;
   min-width: 0;
 }
 
@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
 }
 
 .name {

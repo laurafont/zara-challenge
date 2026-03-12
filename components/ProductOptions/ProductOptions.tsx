@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ProductColorOption, ProductStorageOption } from "@/types/product";
 import { Button } from "@/components/UI/Button";
+import { Checkbox } from "@/components/UI/Checkbox";
 import { Text } from "@/components/UI/Typography";
 import styles from "./ProductOptions.module.scss";
 
@@ -57,28 +58,31 @@ export function ProductOptions({
           <Text variant="label" as="p">
             Color. Pick your favourite.
           </Text>
-          <div className={styles.colorOptions} role="group" aria-label="Color">
-            {colorOptions.map((color) => (
-              <Button
-                key={color.name}
-                className={`${styles.colorButton} ${selectedColor?.name === color.name ? styles.selected : ""}`}
-                style={{ ["--color" as string]: color.hexCode }}
-                onClick={() => onColorSelect(color)}
-                onMouseEnter={() => setHoveredColor(color)}
-                onMouseLeave={() => setHoveredColor(null)}
-                aria-pressed={selectedColor?.name === color.name}
-                aria-label={color.name}
-                title={color.name}
-              >
-                {null}
-              </Button>
-            ))}
+          <div className={styles.colorGroup}>
+            <div className={styles.colorOptions} role="group" aria-label="Color">
+              {colorOptions.map((color) => (
+                <div
+                  key={color.name}
+                  onMouseEnter={() => setHoveredColor(color)}
+                  onMouseLeave={() => setHoveredColor(null)}
+                >
+                  <Checkbox
+                    checked={selectedColor?.name === color.name}
+                    onChange={() => onColorSelect(color)}
+                    className={`${styles.colorButton} ${selectedColor?.name === color.name ? styles.selected : ""}`}
+                    style={{ ["--color" as string]: color.hexCode }}
+                    aria-label={color.name}
+                    title={color.name}
+                  />
+                </div>
+              ))}
+            </div>
+            {displayedColorName && (
+              <Text variant="body" as="p" className={styles.colorLabel}>
+                {displayedColorName.name}
+              </Text>
+            )}
           </div>
-          {displayedColorName && (
-            <Text variant="body" as="p" className={styles.colorLabel}>
-              {displayedColorName.name}
-            </Text>
-          )}
         </div>
       )}
     </section>

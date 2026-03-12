@@ -21,7 +21,7 @@ export function CartIcon({ className }: CartIconProps) {
         <CartIconSvg />
         {count > 0 && (
           <span className={styles.count} aria-hidden="true">
-            4{count > 99 ? "99+" : count}
+            {count > 99 ? "99+" : count}
           </span>
         )}
       </span>

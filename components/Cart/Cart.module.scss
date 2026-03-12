@@ -1,0 +1,12 @@
+@use "../../styles/variables" as *;
+
+.cart {
+  padding-block: $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - $header-height);
+}
+
+.cartMain {
+  flex: 1;
+}

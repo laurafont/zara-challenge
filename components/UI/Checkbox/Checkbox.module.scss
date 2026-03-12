@@ -1,0 +1,47 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  &:has(.input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color, $color-light-gray);
+  outline: 1px solid $color-light-gray;
+  outline-offset: 1px;
+  transition: box-shadow 0.2s ease;
+
+  .wrapper:has(.input:focus-visible) & {
+    outline: 2px solid $color-foreground;
+    outline-offset: 0;
+  }
+
+  .wrapper:has(.input:checked) & {
+    box-shadow: 0 0 0 2px $color-foreground;
+  }
+}

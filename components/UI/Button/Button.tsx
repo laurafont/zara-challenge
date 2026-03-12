@@ -1,32 +1,32 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.scss";
 
-type ButtonProps = {
-  children: ReactNode;
-  disabled?: boolean;
-  type?: "button" | "submit" | "reset";
-  onClick?: () => void;
-  className?: string;
-} & Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  "children" | "disabled" | "type" | "onClick" | "className"
->;
+type ButtonPropsBase = {
+  variant?: "default" | "text";
+};
+type ButtonProps =
+  | (ButtonHTMLAttributes<HTMLButtonElement> & ButtonPropsBase & { href?: undefined })
+  | (AnchorHTMLAttributes<HTMLAnchorElement> & ButtonPropsBase & { href: string });
 
-export function Button({
-  children,
-  disabled = false,
-  type = "button",
-  onClick,
-  className,
-  ...rest
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const { variant = "default", className, children, ...rest } = props;
+  const variantClass = variant === "text" ? styles.text : "";
+  const buttonClassName = [styles.button, variantClass, className ?? ""].filter(Boolean).join(" ").trim();
+
+  if ("href" in rest && rest.href) {
+    const linkProps = rest as AnchorHTMLAttributes<HTMLAnchorElement>;
+    return (
+      <Link href={rest.href} className={buttonClassName} {...linkProps}>
+        {children}
+      </Link>
+    );
+  }
   return (
     <button
-      type={type}
-      className={`${styles.button} ${className ?? ""}`.trim()}
-      disabled={disabled}
-      onClick={onClick}
-      {...rest}
+      type="button"
+      className={buttonClassName}
+      {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {children}
     </button>

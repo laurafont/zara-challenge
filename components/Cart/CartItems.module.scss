@@ -1,0 +1,71 @@
+@use "../../styles/variables" as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-block-start: $spacing-xl;
+}
+
+.row {
+  display: flex;
+  gap: $spacing-2xl;
+  align-items: stretch;
+  padding: $spacing-lg 0;
+}
+
+.imageLink {
+  display: block;
+  flex-shrink: 0;
+}
+
+.imageWrap {
+  position: relative;
+  width: 262px;
+  height: 324px;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+
+.details {
+  padding: $spacing-2xl 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.detailsContent {
+  flex: 1;
+}
+
+.name {
+  font-size: $font-size-base;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s ease-in-out;
+  color: $color-foreground;
+}
+
+.nameLink:hover .name {
+  text-decoration-color: $color-foreground;
+}
+
+.specs,
+.unitPrice {
+  text-transform: uppercase;
+}
+
+.removeLink {
+  align-self: flex-start;
+  margin-top: $spacing-xs;
+  color: $color-error;
+}

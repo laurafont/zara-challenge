@@ -9,6 +9,7 @@ import {
   useReducer,
   type ReactNode,
 } from "react";
+import { v4 as uuidv4 } from "uuid";
 import type { CartItem } from "@/types/cart";
 import { getStoredCart, setStoredCart } from "./cartStorage";
 
@@ -65,19 +66,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const addItem = useCallback((item: Omit<CartItem, "id">) => {
     dispatch({
       type: "ADD_ITEM",
-      item: { ...item, id: crypto.randomUUID() },
+      item: { ...item, id: uuidv4() },
     });
   }, []);
 
-  const removeItem = useCallback(
-    (by: { id: string } | { index: number }) => {
-      dispatch({
-        type: "REMOVE_ITEM",
-        payload: by,
-      });
-    },
-    []
-  );
+  const removeItem = useCallback((by: { id: string } | { index: number }) => {
+    dispatch({
+      type: "REMOVE_ITEM",
+      payload: by,
+    });
+  }, []);
 
   const value: CartContextValue = useMemo(
     () => ({
@@ -88,9 +86,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [cart, addItem, removeItem]
   );
 
-  return (
-    <CartContext.Provider value={value}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart(): CartContextValue {
