@@ -96,7 +96,6 @@ context/
 
 hooks/
   useProductList.ts     # React Query hook for product list + live search
-  useProduct.ts         # React Query hook for single product (unused by pages; kept for reference)
   useDebounce.ts        # Generic debounce hook
 
 components/
