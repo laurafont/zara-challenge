@@ -45,12 +45,14 @@ export type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-function getInitialCart(): CartState {
-  return getStoredCart();
-}
-
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cart, dispatch] = useReducer(cartReducer, null, getInitialCart);
+  const [cart, dispatch] = useReducer(cartReducer, []);
+
+  // Start empty so server and client render the same initial state, then
+  // replay persisted items after mount to avoid a hydration mismatch.
+  useEffect(() => {
+    getStoredCart().forEach((item) => dispatch({ type: "ADD_ITEM", item }));
+  }, []);
 
   useEffect(() => {
     setStoredCart(cart);
