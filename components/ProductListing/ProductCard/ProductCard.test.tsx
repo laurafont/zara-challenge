@@ -15,7 +15,7 @@ describe("ProductCard", () => {
     render(<ProductCard product={mockProduct} />);
     expect(screen.getByText("Product Name")).toBeInTheDocument();
     expect(screen.getByText("Brand")).toBeInTheDocument();
-    expect(screen.getByText("3.000 EUR")).toBeInTheDocument();
+    expect(screen.getByText("3000 EUR")).toBeInTheDocument();
   });
 
   it("renders a link with href to product path", () => {

@@ -59,12 +59,12 @@ export default async function ProductPage({ params }: PageProps) {
   const { id } = await params;
   if (!id) notFound();
 
-  let initialProduct = null;
+  let product;
   try {
-    initialProduct = await getProduct(id);
+    product = await getProduct(id);
   } catch {
     notFound();
   }
 
-  return <ProductItem productId={id} initialProduct={initialProduct} />;
+  return <ProductItem product={product} />;
 }

@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { useProduct } from "@/hooks/useProduct";
 import { useCart } from "@/context/CartContext";
 import type {
   ProductColorOption,
@@ -21,17 +20,13 @@ import styles from "./ProductItem.module.scss";
 import { ROUTES } from "@/constants/routes";
 import { ArrowLeftIcon } from "../../UI/Icons";
 import { SimilarItems } from "../../SimilarItems";
-import { notFound, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type ProductItemProps = {
-  productId: string;
-  initialProduct?: ProductDetailProps | null;
+  product: ProductDetailProps;
 };
 
-export function ProductItem({ productId, initialProduct }: ProductItemProps) {
-  const { product, loading, error, refetch } = useProduct(productId, {
-    initialData: initialProduct,
-  });
+export function ProductItem({ product }: ProductItemProps) {
   const { addItem } = useCart();
   const router = useRouter();
   const [selectedColor, setSelectedColor] = useState<ProductColorOption | null>(
@@ -40,16 +35,12 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
   const [selectedStorage, setSelectedStorage] =
     useState<ProductStorageOption | null>(null);
 
-  const currentPrice = useMemo(() => {
-    if (!product) return 0;
-    return product.basePrice + (selectedStorage?.price ?? 0);
-  }, [product, selectedStorage]);
+  const currentPrice = product.basePrice + (selectedStorage?.price ?? 0);
 
-  const canAddToCart =
-    selectedColor !== null && selectedStorage !== null && product !== null;
+  const canAddToCart = selectedColor !== null && selectedStorage !== null;
 
   const handleAddToCart = () => {
-    if (!product || !selectedColor || !selectedStorage) return;
+    if (!selectedColor || !selectedStorage) return;
     addItem({
       productId: product.id,
       brand: product.brand,
@@ -62,47 +53,11 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
     router.push(ROUTES.CART);
   };
 
-  if (loading) {
-    return (
-      <Container size="small">
-        <p className={styles.message}>Loading...</p>
-      </Container>
-    );
-  }
-
-  if (error && !product) {
-    return (
-      <Container size="small">
-        <div className={styles.errorState} role="alert">
-          <p className={`${styles.message} ${styles.error}`}>
-            Something went wrong loading this product.
-          </p>
-          <Button onClick={() => { void refetch(); }}>Try again</Button>
-        </div>
-      </Container>
-    );
-  }
-
-  if (!product) {
-    notFound();
-  }
-
   const displayImageUrl =
     selectedColor?.imageUrl ?? product.colorOptions[0]?.imageUrl ?? "";
 
   return (
     <>
-      {error && (
-        <div className={styles.errorBanner} role="alert">
-          <span>Could not refresh product data.</span>
-          <button
-            className={styles.retryButton}
-            onClick={() => { void refetch(); }}
-          >
-            Retry
-          </button>
-        </div>
-      )}
       <Container>
         <Link href={ROUTES.HOME}>
           <div className={styles.backIcon}>

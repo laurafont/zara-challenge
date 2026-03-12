@@ -13,7 +13,7 @@ $option-border: 1px solid $color-light-gray;
   flex-wrap: wrap;
 }
 
-.storageButton {
+button.storageButton {
   margin-top: 0;
   padding: $spacing-md $spacing-md;
   border: $option-border;

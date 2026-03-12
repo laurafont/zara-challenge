@@ -43,7 +43,6 @@ const mockPush = jest.fn();
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ push: mockPush }),
-  notFound: () => null,
 }));
 
 jest.mock("uuid", () => ({ v4: () => "fixed-id" }));
@@ -51,7 +50,7 @@ jest.mock("uuid", () => ({ v4: () => "fixed-id" }));
 function renderProductPage() {
   return render(
     <Providers>
-      <ProductItem productId="p1" initialProduct={mockProductDetail} />
+      <ProductItem product={mockProductDetail} />
       <CartIcon />
     </Providers>
   );
