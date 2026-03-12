@@ -1,0 +1,21 @@
+@use "../styles/variables" as *;
+
+.section {
+  padding-block: $spacing-2xl;
+}
+
+.title {
+  margin: 0 0 $spacing-md 0;
+}
+
+.link {
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  text-transform: uppercase;
+  color: $color-foreground;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

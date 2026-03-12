@@ -10,7 +10,11 @@ export function useProductList(initialProducts?: ProductProps[]) {
   const [search, setSearch] = useState("");
   const debouncedQuery = useDebounce(search, DEBOUNCE_MS);
 
-  const { data: products = [], isLoading, error } = useQuery({
+  const {
+    data: products = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["products", debouncedQuery],
     queryFn: () => fetchProducts(debouncedQuery),
     initialData:

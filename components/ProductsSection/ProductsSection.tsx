@@ -6,7 +6,7 @@ import { ProductList } from "@/components/ProductList";
 import { SearchBar } from "@/components/SearchBar";
 
 type ProductsSectionProps = {
-  initialProducts: ProductProps[];
+  initialProducts?: ProductProps[];
 };
 
 export function ProductsSection({ initialProducts }: ProductsSectionProps) {

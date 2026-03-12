@@ -6,13 +6,18 @@ type ButtonPropsBase = {
   variant?: "default" | "text";
 };
 type ButtonProps =
-  | (ButtonHTMLAttributes<HTMLButtonElement> & ButtonPropsBase & { href?: undefined })
-  | (AnchorHTMLAttributes<HTMLAnchorElement> & ButtonPropsBase & { href: string });
+  | (ButtonHTMLAttributes<HTMLButtonElement> &
+      ButtonPropsBase & { href?: undefined })
+  | (AnchorHTMLAttributes<HTMLAnchorElement> &
+      ButtonPropsBase & { href: string });
 
 export function Button(props: ButtonProps) {
   const { variant = "default", className, children, ...rest } = props;
   const variantClass = variant === "text" ? styles.text : "";
-  const buttonClassName = [styles.button, variantClass, className ?? ""].filter(Boolean).join(" ").trim();
+  const buttonClassName = [styles.button, variantClass, className ?? ""]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
 
   if ("href" in rest && rest.href) {
     const linkProps = rest as AnchorHTMLAttributes<HTMLAnchorElement>;

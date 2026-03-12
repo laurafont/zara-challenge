@@ -21,7 +21,7 @@ import styles from "./ProductItem.module.scss";
 import { ROUTES } from "@/constants";
 import { ArrowLeftIcon } from "../UI/Icons";
 import { SimilarItems } from "../SimilarItems";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 
 type ProductItemProps = {
   productId: string;
@@ -81,11 +81,7 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
   }
 
   if (!product) {
-    return (
-      <Container size="small">
-        <p className={styles.message}>Product not found.</p>
-      </Container>
-    );
+    notFound();
   }
 
   const displayImageUrl =

@@ -37,7 +37,10 @@ export function Checkbox({
   return (
     <label
       htmlFor={inputId}
-      className={[styles.wrapper, className ?? ""].filter(Boolean).join(" ").trim()}
+      className={[styles.wrapper, className ?? ""]
+        .filter(Boolean)
+        .join(" ")
+        .trim()}
       style={style}
     >
       <input

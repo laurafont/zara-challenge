@@ -33,7 +33,7 @@ export function ProductList({ products, loading, error }: ProductListProps) {
     <ul className={styles.grid} key={products.map((p) => p.id).join(",")}>
       {products.map((product, index) => (
         <li
-          key={product.id}
+          key={`${product.id}-${index}`}
           className={styles.gridItem}
           style={{ "--i": index } as React.CSSProperties}
         >

@@ -14,7 +14,7 @@ function CartItemRow({ item }: { item: CartItemType }) {
   const { removeItem } = useCart();
 
   return (
-    <article
+    <li
       className={styles.row}
       aria-label={`${item.name}, ${item.color}, ${item.storage}`}
       data-product-id={item.productId}
@@ -57,7 +57,7 @@ function CartItemRow({ item }: { item: CartItemType }) {
           Eliminar
         </Button>
       </div>
-    </article>
+    </li>
   );
 }
 
@@ -65,10 +65,10 @@ export function CartItems() {
   const { cart } = useCart();
 
   return (
-    <div className={styles.list} role="list">
+    <ul className={styles.list}>
       {cart.map((item) => (
         <CartItemRow key={item.id} item={item} />
       ))}
-    </div>
+    </ul>
   );
 }

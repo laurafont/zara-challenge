@@ -59,7 +59,11 @@ export function ProductOptions({
             Color. Pick your favourite.
           </Text>
           <div className={styles.colorGroup}>
-            <div className={styles.colorOptions} role="group" aria-label="Color">
+            <div
+              className={styles.colorOptions}
+              role="group"
+              aria-label="Color"
+            >
               {colorOptions.map((color) => (
                 <div
                   key={color.name}
