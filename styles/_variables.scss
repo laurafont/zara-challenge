@@ -10,11 +10,11 @@ $font-family-base: Helvetica, Arial, sans-serif;
 // Font sizes
 $font-size-sm: 0.625rem; // 10px
 $font-size-base: 0.75rem; // 12px
-$font-size-md: 0.875rem; // 14px
+$font-size-md: clamp(0.75rem, 0.2vw + 0.7rem, 0.875rem); // 14px
 $font-size-lg: 1rem; // 16px
-$font-size-xl: 1.125rem; // 18px
-$font-size-2xl: 1.25rem; // 20px
-$font-size-3xl: 1.5rem; // 24px
+$font-size-xl: clamp(1rem, 0.5vw + 0.9rem, 1.125rem); // 18px
+$font-size-2xl: clamp(0.875rem, 0.5vw + 0.8rem, 1.25rem); // 20px
+$font-size-3xl: clamp(1.25rem, 0.7vw + 1rem, 1.5rem); // 24px
 
 $font-weight-base: 300;
 

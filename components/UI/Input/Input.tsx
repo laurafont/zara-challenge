@@ -35,7 +35,7 @@ export function Input({
   );
 
   if (label) {
-    const labelClassName = labelHidden ? styles.srOnly : styles.label;
+    const labelClassName = labelHidden ? "srOnly" : styles.label;
     return (
       <div>
         <Label htmlFor={id} className={labelClassName}>
