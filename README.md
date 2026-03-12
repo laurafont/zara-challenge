@@ -22,10 +22,10 @@ Copy the example file and fill in your values:
 cp .env.example .env
 ```
 
-| Variable | Description | Required |
-|---|---|---|
-| `NEXT_PUBLIC_API_BASE_URL` | Base URL for the products REST API | Yes |
-| `NEXT_PUBLIC_API_KEY` | Value sent as the `x-api-key` header on every request | Yes |
+| Variable                   | Description                                           | Required |
+| -------------------------- | ----------------------------------------------------- | -------- |
+| `NEXT_PUBLIC_API_BASE_URL` | Base URL for the products REST API                    | Yes      |
+| `NEXT_PUBLIC_API_KEY`      | Value sent as the `x-api-key` header on every request | Yes      |
 
 > **Note:** Both variables are prefixed with `NEXT_PUBLIC_` because product fetching happens on both the server (SSR/ISR) and the client (live search). Never commit real keys to the repository.
 
@@ -48,17 +48,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start Next.js dev server |
-| `npm run build` | Build for production |
-| `npm start` | Serve the production build |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format all files with Prettier |
-| `npm test` | Run Jest unit and integration tests |
-| `npm run test:watch` | Jest in watch mode |
-| `npm run test:e2e` | Run Playwright end-to-end tests (requires built server) |
-| `npm run test:e2e:ui` | Playwright with interactive UI |
+| Command               | Description                                             |
+| --------------------- | ------------------------------------------------------- |
+| `npm run dev`         | Start Next.js dev server                                |
+| `npm run build`       | Build for production                                    |
+| `npm start`           | Serve the production build                              |
+| `npm run lint`        | Run ESLint                                              |
+| `npm run format`      | Format all files with Prettier                          |
+| `npm test`            | Run Jest unit and integration tests                     |
+| `npm run test:watch`  | Jest in watch mode                                      |
+| `npm run test:e2e`    | Run Playwright end-to-end tests (requires built server) |
+| `npm run test:e2e:ui` | Playwright with interactive UI                          |
 
 ---
 
@@ -131,11 +131,11 @@ e2e/                    # Playwright end-to-end tests
 
 ### Rendering strategy
 
-| Route | Strategy | Why |
-|---|---|---|
-| `/` | ISR (`revalidate: 3600`) | Product catalogue changes infrequently; static HTML is served instantly |
+| Route           | Strategy                     | Why                                                                                        |
+| --------------- | ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `/`             | ISR (`revalidate: 3600`)     | Product catalogue changes infrequently; static HTML is served instantly                    |
 | `/product/[id]` | ISR + `generateStaticParams` | All known product pages pre-built at build time; unknown IDs rendered on-demand and cached |
-| `/cart` | Client-only shell | Cart state is local (localStorage); no server data needed |
+| `/cart`         | Client-only shell            | Cart state is local (localStorage); no server data needed                                  |
 
 ### Data flow
 
@@ -205,17 +205,17 @@ e2e/                    # Playwright end-to-end tests
 
 ## Tech Stack
 
-| Concern | Library |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| UI | React 19 |
-| Language | TypeScript 5 (strict) |
-| Styling | SCSS Modules + design tokens |
-| Server state | Native `fetch` with Next.js ISR cache |
-| Client state | TanStack React Query v5 |
-| Cart state | React `useReducer` + `localStorage` |
-| Testing (unit/integration) | Jest 30 + React Testing Library + jest-axe |
-| Testing (e2e) | Playwright |
-| Compiler optimisation | React Compiler (`babel-plugin-react-compiler`) |
-| Formatting | Prettier |
-| Linting | ESLint (Next.js config) |
+| Concern                    | Library                                        |
+| -------------------------- | ---------------------------------------------- |
+| Framework                  | Next.js 16 (App Router)                        |
+| UI                         | React 19                                       |
+| Language                   | TypeScript 5 (strict)                          |
+| Styling                    | SCSS Modules + design tokens                   |
+| Server state               | Native `fetch` with Next.js ISR cache          |
+| Client state               | TanStack React Query v5                        |
+| Cart state                 | React `useReducer` + `localStorage`            |
+| Testing (unit/integration) | Jest 30 + React Testing Library + jest-axe     |
+| Testing (e2e)              | Playwright                                     |
+| Compiler optimisation      | React Compiler (`babel-plugin-react-compiler`) |
+| Formatting                 | Prettier                                       |
+| Linting                    | ESLint (Next.js config)                        |

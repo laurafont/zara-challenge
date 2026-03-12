@@ -22,9 +22,11 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 export function Button(props: ButtonProps) {
   const { variant = "default", className, children, ...rest } = props;
   const variantClass =
-    variant === "text" ? styles.text :
-    variant === "outline" ? styles.outline :
-    "";
+    variant === "text"
+      ? styles.text
+      : variant === "outline"
+        ? styles.outline
+        : "";
   const buttonClassName = [styles.button, variantClass, className ?? ""]
     .filter(Boolean)
     .join(" ")

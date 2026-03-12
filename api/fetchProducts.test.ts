@@ -46,7 +46,7 @@ describe("fetchProducts", () => {
 
     expect(mock).toHaveBeenCalledTimes(1);
     const [url, init] = mock.mock.calls[0] as unknown as [string, RequestInit];
-    expect(url).toMatch(/\/products$/);
+    expect(url).toMatch(/\/products\?limit=20$/);
     const headers = init?.headers as Record<string, string>;
     expect(headers).toBeDefined();
     expect(headers["x-api-key"]).toBeDefined();
@@ -61,7 +61,7 @@ describe("fetchProducts", () => {
 
     expect(mock).toHaveBeenCalledTimes(1);
     const [url] = mock.mock.calls[0] as unknown as [string, RequestInit];
-    expect(url).toMatch(/products\?search=phone/);
+    expect(url).toMatch(/products\?limit=20&search=phone/);
   });
 
   it("returns typed array and first item has id, name, basePrice", async () => {
