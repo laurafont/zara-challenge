@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import type {
@@ -27,6 +27,9 @@ type ProductItemProps = {
 };
 
 export function ProductItem({ product }: ProductItemProps) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
   const { addItem } = useCart();
   const router = useRouter();
   const [selectedColor, setSelectedColor] = useState<ProductColorOption | null>(
