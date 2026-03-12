@@ -19,6 +19,7 @@ export function apiRequest(
 ): Promise<Response> {
   const url = path.startsWith("http") ? path : buildUrl(path);
   return fetch(url, {
+    next: { revalidate: 60 },
     ...init,
     headers: {
       ...DEFAULT_HEADERS,

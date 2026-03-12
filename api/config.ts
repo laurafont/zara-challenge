@@ -4,8 +4,12 @@
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
 
 /**
- * x-api-key for API authentication. Set NEXT_PUBLIC_API_KEY in .env for production.
- * Fallback is the dev API key.
+ * x-api-key for API authentication. Set NEXT_PUBLIC_API_KEY in .env.
  */
-const DEV_API_KEY = "87909682e6cd74208f41a6ef39fe4191";
-export const API_KEY = process.env.NEXT_PUBLIC_API_KEY ?? DEV_API_KEY;
+export const API_KEY = process.env.NEXT_PUBLIC_API_KEY ?? "";
+
+if (!API_KEY) {
+  throw new Error(
+    "Missing required environment variable: NEXT_PUBLIC_API_KEY. Add it to .env."
+  );
+}

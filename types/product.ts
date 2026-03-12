@@ -1,13 +1,4 @@
-export interface ProductSpecs {
-  screen: string;
-  resolution: string;
-  processor: string;
-  mainCamera: string;
-  selfieCamera: string;
-  battery: string;
-  os: string;
-  screenRefreshRate: string;
-}
+export type ProductSpecs = Record<string, string>;
 
 export interface ProductColorOption {
   name: string;
@@ -20,7 +11,7 @@ export interface ProductStorageOption {
   price: number;
 }
 
-export interface SimilarProduct {
+export interface BaseProductProps {
   id: string;
   brand: string;
   name: string;
@@ -28,22 +19,14 @@ export interface SimilarProduct {
   imageUrl: string;
 }
 
-export interface ProductDetailProps {
-  id: string;
-  brand: string;
-  name: string;
+export type SimilarProduct = BaseProductProps;
+
+export interface ProductDetailProps extends BaseProductProps {
   description: string;
-  basePrice: number;
   specs: ProductSpecs;
   colorOptions: ProductColorOption[];
   storageOptions: ProductStorageOption[];
   similarProducts: SimilarProduct[];
 }
 
-export interface ProductProps {
-  id: string;
-  brand: string;
-  name: string;
-  basePrice: number;
-  imageUrl: string;
-}
+export type ProductProps = BaseProductProps;

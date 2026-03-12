@@ -9,7 +9,7 @@ import type {
   ProductDetailProps,
   ProductStorageOption,
 } from "@/types/product";
-import { ProductItemSpecs } from "@/components/ProductDetail/ProductItemSpecs";
+import { ProductItemSpecs } from "@/components/ProductDetail/ProductItemSpecs/ProductItemSpecs";
 import { ProductOptions } from "@/components/ProductDetail/ProductOptions/ProductOptions";
 import { Button } from "@/components/UI/Button";
 import { Container } from "@/components/UI/Container";
@@ -29,7 +29,7 @@ type ProductItemProps = {
 };
 
 export function ProductItem({ productId, initialProduct }: ProductItemProps) {
-  const { product, loading, error } = useProduct(productId, {
+  const { product, loading, error, refetch } = useProduct(productId, {
     initialData: initialProduct,
   });
   const { addItem } = useCart();
@@ -70,12 +70,15 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
     );
   }
 
-  if (error) {
+  if (error && !product) {
     return (
       <Container size="small">
-        <p className={`${styles.message} ${styles.error}`} role="alert">
-          {error.message}
-        </p>
+        <div className={styles.errorState} role="alert">
+          <p className={`${styles.message} ${styles.error}`}>
+            Something went wrong loading this product.
+          </p>
+          <Button onClick={() => { void refetch(); }}>Try again</Button>
+        </div>
       </Container>
     );
   }
@@ -89,6 +92,17 @@ export function ProductItem({ productId, initialProduct }: ProductItemProps) {
 
   return (
     <>
+      {error && (
+        <div className={styles.errorBanner} role="alert">
+          <span>Could not refresh product data.</span>
+          <button
+            className={styles.retryButton}
+            onClick={() => { void refetch(); }}
+          >
+            Retry
+          </button>
+        </div>
+      )}
       <Container>
         <Link href={ROUTES.HOME}>
           <div className={styles.backIcon}>

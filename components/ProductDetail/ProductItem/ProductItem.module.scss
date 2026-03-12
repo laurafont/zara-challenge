@@ -77,3 +77,41 @@
 .error {
   color: $color-error;
 }
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding-block: $spacing-xl;
+}
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-md;
+  background-color: #fff0f0;
+  border-left: 3px solid $color-error;
+  font-size: $font-size-base;
+  color: $color-error;
+}
+
+.retryButton {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid $color-error;
+  color: $color-error;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  text-transform: uppercase;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-error;
+    color: $color-background;
+  }
+}

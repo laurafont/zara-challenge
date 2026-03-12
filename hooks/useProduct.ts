@@ -13,6 +13,7 @@ export function useProduct(id: string, options?: UseProductOptions) {
     data: product,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["product", id],
     queryFn: () => getProduct(id),
@@ -20,13 +21,10 @@ export function useProduct(id: string, options?: UseProductOptions) {
     initialData: initialData ?? undefined,
   });
 
-  if (!id) {
-    return { product: null, loading: false, error: null };
-  }
-
   return {
-    product: product ?? null,
-    loading: isLoading,
-    error: error ?? null,
+    product: id ? (product ?? null) : null,
+    loading: id ? isLoading : false,
+    error: id ? (error ?? null) : null,
+    refetch,
   };
 }
