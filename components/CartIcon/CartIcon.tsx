@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { useCart } from "@/context/CartContext";
-import { CartIcon as CartIconSvg } from "@/components/UI/Icons";
+import { CartIcon as CartIconSvg, CartIconFilled } from "@/components/UI/Icons";
 import styles from "./CartIcon.module.scss";
 
 type CartIconProps = {
@@ -18,7 +18,7 @@ export function CartIcon({ className }: CartIconProps) {
   return (
     <Link href={ROUTES.CART} className={className} aria-label={ariaLabel}>
       <span className={styles.wrapper}>
-        <CartIconSvg />
+        {count > 0 ? <CartIconFilled /> : <CartIconSvg />}
         <span className={styles.count} aria-hidden="true">
           {count > 99 ? "99+" : count}
         </span>
