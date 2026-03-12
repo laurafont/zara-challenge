@@ -3,7 +3,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import styles from "./Button.module.scss";
 
 type ButtonPropsBase = {
-  variant?: "default" | "text";
+  variant?: "default" | "text" | "outline";
 };
 
 type ButtonAsButton = ButtonHTMLAttributes<HTMLButtonElement> &
@@ -21,7 +21,10 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export function Button(props: ButtonProps) {
   const { variant = "default", className, children, ...rest } = props;
-  const variantClass = variant === "text" ? styles.text : "";
+  const variantClass =
+    variant === "text" ? styles.text :
+    variant === "outline" ? styles.outline :
+    "";
   const buttonClassName = [styles.button, variantClass, className ?? ""]
     .filter(Boolean)
     .join(" ")

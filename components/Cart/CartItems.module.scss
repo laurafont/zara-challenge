@@ -9,9 +9,12 @@
 
 .row {
   display: flex;
-  gap: $spacing-2xl;
+  gap: $spacing-lg;
   align-items: stretch;
   padding: $spacing-lg 0;
+  @media (min-width: $breakpoint-sm) {
+    gap: $spacing-2xl;
+  }
 }
 
 .imageLink {
@@ -21,8 +24,12 @@
 
 .imageWrap {
   position: relative;
-  width: 262px;
-  height: 324px;
+  width: 160px;
+  height: 197px;
+  @media (min-width: $breakpoint-sm) {
+    width: 262px;
+    height: 324px;
+  }
 }
 
 .image {

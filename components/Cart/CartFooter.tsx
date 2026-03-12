@@ -15,11 +15,15 @@ export function CartFooter({
 }) {
   return (
     <footer className={styles.footer}>
-      <Button href={ROUTES.HOME} className={styles.continueBtn}>
+      <Button
+        variant="outline"
+        href={ROUTES.HOME}
+        className={styles.continueBtn}
+      >
         Continue Shopping
       </Button>
       {!isEmpty && (
-        <div className={styles.totalBlock}>
+        <>
           <div className={styles.totalPrice}>
             <Text variant="label" as="span">
               Total
@@ -31,7 +35,7 @@ export function CartFooter({
           <Button href={ROUTES.HOME} className={styles.payBtn}>
             Pay
           </Button>
-        </div>
+        </>
       )}
     </footer>
   );

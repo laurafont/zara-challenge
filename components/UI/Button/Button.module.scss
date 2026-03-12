@@ -12,6 +12,9 @@
   min-width: 260px;
   text-align: center;
   cursor: pointer;
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-md $spacing-md;
+  }
 
   &:hover:not(:disabled) {
     opacity: 0.8;
@@ -19,6 +22,28 @@
 
   &:disabled {
     background: $button-background-disabled;
+    color: $button-text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.outline {
+  background: $color-background;
+  color: $color-foreground;
+  border: $border;
+  min-width: 260px;
+  @media (max-width: $breakpoint-md) {
+    min-width: 200px;
+  }
+
+  &:hover:not(:disabled) {
+    background: $color-foreground;
+    color: $color-background;
+    opacity: 1;
+  }
+
+  &:disabled {
+    border-color: $color-light-gray;
     color: $button-text-disabled;
     cursor: not-allowed;
   }
