@@ -68,7 +68,12 @@ export function ProductItem({ product }: ProductItemProps) {
           </div>
         </Link>
       </Container>
-      <Container size="small" as="section" className={styles.wrapper}>
+      <Container
+        size="small"
+        as="section"
+        className={styles.wrapper}
+        aria-labelledby="product-name"
+      >
         <div className={styles.header}>
           <div className={styles.imageWrapper}>
             <Image
@@ -82,7 +87,7 @@ export function ProductItem({ product }: ProductItemProps) {
           </div>
           <div className={styles.infoColumn}>
             <div className={styles.info}>
-              <Heading level="h1" className={styles.name}>
+              <Heading id="product-name" level="h1" className={styles.name}>
                 {product.name}
               </Heading>
               <Text variant="body" as="p" className={styles.price}>
@@ -105,11 +110,9 @@ export function ProductItem({ product }: ProductItemProps) {
 
         <ProductItemSpecs product={product} />
       </Container>
-      <Container size="small" as="section">
-        {product.similarProducts.length > 0 && (
-          <SimilarItems products={product.similarProducts} />
-        )}
-      </Container>
+      {product.similarProducts.length > 0 && (
+        <SimilarItems products={product.similarProducts} />
+      )}
     </>
   );
 }

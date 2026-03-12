@@ -28,11 +28,11 @@ export function ProductOptions({
   const displayedColorName = hoveredColor ?? selectedColor;
 
   return (
-    <section className={styles.selectors} aria-label="Product options">
+    <div className={styles.selectors} aria-label="Product options">
       {storageOptions.length > 0 && (
         <div className={styles.selectorGroup}>
           <Text variant="label" as="p">
-            Storage. ¿How much space do you need?
+            Storage. How much space do you need?
           </Text>
           <div
             className={styles.storageOptions}
@@ -69,6 +69,8 @@ export function ProductOptions({
                   key={color.name}
                   onMouseEnter={() => setHoveredColor(color)}
                   onMouseLeave={() => setHoveredColor(null)}
+                  onFocus={() => setHoveredColor(color)}
+                  onBlur={() => setHoveredColor(null)}
                 >
                   <Checkbox
                     checked={selectedColor?.name === color.name}
@@ -89,6 +91,6 @@ export function ProductOptions({
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }

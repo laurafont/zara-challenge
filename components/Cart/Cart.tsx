@@ -14,7 +14,12 @@ export function Cart() {
   return (
     <Container className={styles.cart} aria-label="Cart" as="section">
       <div className={styles.cartMain}>
-        <Heading level="h1">CART ({cart.length})</Heading>
+        <Heading level="h1">
+          CART{" "}
+          <span aria-live="polite" aria-atomic="true">
+            ({cart.length})
+          </span>
+        </Heading>
         <CartItems />
       </div>
       <CartFooter isEmpty={cart.length === 0} total={total} />

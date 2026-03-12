@@ -65,7 +65,7 @@ export function CartItems() {
   const { cart } = useCart();
 
   return (
-    <ul className={styles.list}>
+    <ul className={styles.list} aria-label="Cart items">
       {cart.map((item) => (
         <CartItemRow key={item.id} item={item} />
       ))}

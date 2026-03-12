@@ -21,8 +21,8 @@ export function ProductItemSpecs({ product }: ProductItemSpecsProps) {
   const { brand, name, description, specs } = product;
 
   return (
-    <div className={styles.specs} aria-label="Specifications">
-      <Heading level="h3" className={styles.title}>
+    <div className={styles.specs} role="region" aria-label="Specifications">
+      <Heading level="h2" className={styles.title}>
         Specifications
       </Heading>
       <dl className={styles.specList}>

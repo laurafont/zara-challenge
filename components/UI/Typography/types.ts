@@ -1,4 +1,4 @@
-import { ReactNode, ElementType } from "react";
+import { HTMLAttributes, ElementType } from "react";
 
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5";
 
@@ -9,10 +9,7 @@ export type TextVariant =
   | "overline"
   | "label";
 
-export type BaseTypographyProps = {
-  children: ReactNode;
-  className?: string;
-};
+export type BaseTypographyProps = HTMLAttributes<HTMLElement>;
 
 export type HeadingProps = BaseTypographyProps & {
   level?: HeadingLevel;
