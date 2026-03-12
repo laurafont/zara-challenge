@@ -1,6 +1,6 @@
 import { fetchProducts } from "@/api/fetchProducts";
 import { Container } from "@/components/UI/Container";
-import { ProductsSection } from "@/components/ProductsSection";
+import { ProductsSection } from "@/components/ProductListing/ProductsSection";
 
 export const revalidate = 3600;
 

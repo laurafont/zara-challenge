@@ -1,7 +1,6 @@
 import type { ProductProps } from "@/types/product";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/ProductListing/ProductCard";
 import styles from "./ProductList.module.scss";
-import { Heading } from "../UI/Typography";
 
 type ProductListProps = {
   products: ProductProps[];
@@ -31,21 +30,16 @@ export function ProductList({ products, loading, error }: ProductListProps) {
   }
 
   return (
-    <>
-      <Heading level="h2" className="srOnly">
-        Products
-      </Heading>
-      <ul className={styles.grid} key={products.map((p) => p.id).join(",")}>
-        {products.map((product, index) => (
-          <li
-            key={`${product.id}-${index}`}
-            className={styles.gridItem}
-            style={{ "--i": index } as React.CSSProperties}
-          >
-            <ProductCard product={product} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className={styles.grid} key={products.map((p) => p.id).join(",")}>
+      {products.map((product, index) => (
+        <li
+          key={`${product.id}-${index}`}
+          className={styles.gridItem}
+          style={{ "--i": index } as React.CSSProperties}
+        >
+          <ProductCard product={product} />
+        </li>
+      ))}
+    </ul>
   );
 }

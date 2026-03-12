@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProduct } from "@/api/getProduct";
 import { fetchProducts } from "@/api/fetchProducts";
-import { ProductItem } from "@/components/ProductItem/ProductItem";
+import { ProductItem } from "@/components/ProductDetail/ProductItem/ProductItem";
 import { formatPrice } from "@/utils/formatPrice";
 
 // Implement ISR

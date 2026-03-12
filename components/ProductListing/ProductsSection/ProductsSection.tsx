@@ -2,7 +2,7 @@
 
 import type { ProductProps } from "@/types/product";
 import { useProductList } from "@/hooks/useProductList";
-import { ProductList } from "@/components/ProductList";
+import { ProductList } from "@/components/ProductListing/ProductList";
 import { SearchBar } from "@/components/SearchBar";
 
 type ProductsSectionProps = {

@@ -6,7 +6,13 @@ import { Button } from "@/components/UI/Button";
 import { Text } from "@/components/UI/Typography";
 import styles from "./CartFooter.module.scss";
 
-export function CartFooter({ isEmpty, total }: { isEmpty: boolean; total: number }) {
+export function CartFooter({
+  isEmpty,
+  total,
+}: {
+  isEmpty: boolean;
+  total: number;
+}) {
   return (
     <footer className={styles.footer}>
       <Button href={ROUTES.HOME} className={styles.continueBtn}>

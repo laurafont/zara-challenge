@@ -1,5 +1,5 @@
 import type { SimilarProduct } from "@/types/product";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/ProductListing/ProductCard";
 import { Heading } from "@/components/UI/Typography";
 import { Carousel } from "@/components/UI/Carousel";
 import styles from "./SimilarItems.module.scss";

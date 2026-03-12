@@ -9,8 +9,8 @@ import type {
   ProductDetailProps,
   ProductStorageOption,
 } from "@/types/product";
-import { ProductItemSpecs } from "@/components/ProductItemSpecs";
-import { ProductOptions } from "@/components/ProductOptions/ProductOptions";
+import { ProductItemSpecs } from "@/components/ProductDetail/ProductItemSpecs";
+import { ProductOptions } from "@/components/ProductDetail/ProductOptions/ProductOptions";
 import { Button } from "@/components/UI/Button";
 import { Container } from "@/components/UI/Container";
 import Image from "next/image";
@@ -19,8 +19,8 @@ import { Heading } from "@/components/UI/Typography";
 import { formatPrice } from "@/utils/formatPrice";
 import styles from "./ProductItem.module.scss";
 import { ROUTES } from "@/constants/routes";
-import { ArrowLeftIcon } from "../UI/Icons";
-import { SimilarItems } from "../SimilarItems";
+import { ArrowLeftIcon } from "../../UI/Icons";
+import { SimilarItems } from "../../SimilarItems";
 import { notFound, useRouter } from "next/navigation";
 
 type ProductItemProps = {

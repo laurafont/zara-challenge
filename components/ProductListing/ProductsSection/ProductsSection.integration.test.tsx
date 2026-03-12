@@ -8,7 +8,7 @@ import {
 import { Container } from "@/components/UI/Container";
 import { ProductsSection } from "./ProductsSection";
 import { Providers } from "@/context/providers";
-import * as fetchProductsModule from "../../api/fetchProducts";
+import * as fetchProductsModule from "../../../api/fetchProducts";
 
 const mockProducts = [
   {
@@ -27,7 +27,7 @@ const mockProducts = [
   },
 ];
 
-jest.mock("../../api/fetchProducts", () => ({
+jest.mock("../../../api/fetchProducts", () => ({
   fetchProducts: jest.fn(),
 }));
 
